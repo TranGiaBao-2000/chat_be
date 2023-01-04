@@ -38,6 +38,14 @@
 			<artifactId>google-api-services-oauth2</artifactId>
 			<version>v2-rev20200213-1.32.1</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.31</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

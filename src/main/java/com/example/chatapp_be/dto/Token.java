@@ -1,8 +1,8 @@
 package com.example.chatapp_be.dto;
 
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data // Getter Setter
 public class Token {
-    String tokenid;
+    String id;
 }
