@@ -1,7 +1,7 @@
 package com.example.chatapp_be.controller;
 
 
-import com.example.chatapp_be.dto.Account;
+import com.example.chatapp_be.dto.AccountDTO;
 import com.example.chatapp_be.dto.Response;
 import com.example.chatapp_be.dto.Token;
 import com.example.chatapp_be.service.VerifyTokenGoogle;
@@ -24,9 +24,9 @@ public class AccountAPI {
         // input: token
 
         // process: check coi có account trong hệ thống chưa
-        Account account = verifyTokenGoogle.verifyToken(token.getId());
+        AccountDTO account = verifyTokenGoogle.verifyToken(token.getId());
 
-        Response<Account> response  = new Response<Account>(200, "Login success", account);
+        Response<AccountDTO> response  = new Response<AccountDTO>(200, "Login success", account);
         // response: kết qủa
         return ResponseEntity.ok(response);
     }

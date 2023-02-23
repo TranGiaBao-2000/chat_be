@@ -1,14 +1,12 @@
 package com.example.chatapp_be.service;
 
-import com.example.chatapp_be.dto.Account;
+import com.example.chatapp_be.dto.AccountDTO;
 import com.example.chatapp_be.exception.InvalidToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.gson.GsonFactory;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -22,7 +20,7 @@ public class VerifyTokenGoogle {
             .setAudience(Collections.singletonList("233707672502-t92c9697ga75uqddtk0jkhnj72lp8873.apps.googleusercontent.com"))
             .build();
 
-    public Account verifyToken(String token){
+    public AccountDTO verifyToken(String token){
         try{
             GoogleIdToken idToken = verifier.verify(token);
             if (idToken != null) {
@@ -30,8 +28,8 @@ public class VerifyTokenGoogle {
                 String email = payload.getEmail();
                 String name = (String) payload.get("name");
                 String pictureUrl = (String) payload.get("picture");
-                Account account = new Account(email, name, pictureUrl);
-                return account;
+                AccountDTO accountDTO = new AccountDTO(email, name, pictureUrl);
+                return accountDTO;
             } else {
                 throw new InvalidToken("Token invalid!!!");
             }

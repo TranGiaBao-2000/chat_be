@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data // Getter Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Account {
+public class AccountDTO {
     long id;
     String email;
     String fullName;
@@ -15,7 +15,7 @@ public class Account {
     String username;
     String password;
 
-    public Account(String email, String fullName, String picture) {
+    public AccountDTO(String email, String fullName, String picture) {
         this.email = email;
         this.fullName = fullName;
         this.picture = picture;
