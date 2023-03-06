@@ -15,4 +15,10 @@ public class AccountAPIHandleException {
         return ResponseEntity.ok(response);
     }
 
+
+    @ExceptionHandler(BadRequest.class)
+    public ResponseEntity badRequest(BadRequest badRequest){
+        Response response = new Response(400, badRequest.getMessage(), null);
+        return ResponseEntity.ok(response);
+    }
 }

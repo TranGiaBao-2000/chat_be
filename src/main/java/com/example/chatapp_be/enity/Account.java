@@ -1,10 +1,7 @@
 package com.example.chatapp_be.enity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +21,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(unique = true) // ko đc trùng
     String email;
     String fullName;
     String picture;
@@ -31,3 +29,6 @@ public class Account {
     String password;
 
 }
+
+
+// code first
