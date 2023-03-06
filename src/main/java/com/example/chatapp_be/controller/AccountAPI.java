@@ -10,12 +10,11 @@ import com.example.chatapp_be.repository.AccountRepository;
 import com.example.chatapp_be.service.VerifyTokenGoogle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @RestController // anotation
 @CrossOrigin(origins = {"http://localhost:5500", "http://127.0.0.1:5500", "http://giabao.com"})
@@ -72,5 +71,10 @@ public class AccountAPI {
         return ResponseEntity.ok(response);
     }
 
-
+    @GetMapping("/account/{text}")
+    public ResponseEntity getAccounts(@PathVariable String text){
+        List<Account> accounts = accountRepository.findAccountsByEmailContainingOrFullNameContaining(text, text);
+        Response<List<Account>> response  = new Response<List<Account>>(200, "Get accounts success", accounts);
+        return ResponseEntity.ok(response);
+    }
 }
